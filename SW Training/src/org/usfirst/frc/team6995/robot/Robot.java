@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		drivebase = new DrivebaseS();
 		m_oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
+
 		SmartDashboard.putData("Auto mode", m_chooser);
 		m_chooser.addDefault("Auto by Time",  new AutoDriveTimeC());
 		m_chooser.addObject("Auto by Distance",  new AutoDriveDistanceC());

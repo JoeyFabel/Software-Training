@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6995.robot.commands;
 import org.usfirst.frc.team6995.robot.Robot;
+import org.usfirst.frc.team6995.robot.subsystems.*;
 import org.usfirst.frc.team6995.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,11 +24,12 @@ public class AutoDriveDistanceC extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     Robot.drivebase.arcadeDrive((autospeed), 0);
+    SmartDashboard.putNumber("DistanceTraveled", Robot.drivebase.getDistanceTraveled());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	SmartDashboard.putNumber("DistanceTraveled", Robot.drivebase.getDistanceTraveled());
+    	
     	return (Math.abs(Robot.drivebase.getDistanceTraveled()) >= Math.abs(RobotMap.AUTO_DISTANCE));
     }
 
@@ -35,7 +37,6 @@ public class AutoDriveDistanceC extends Command {
     protected void end() {
     	Robot.drivebase.arcadeDrive(0,  0);
     	Robot.drivebase.resetEncoder();
-    	Robot.drivebase.resetEncoder();//Twice for same reason as before.
     }
 
     // Called when another command which requires one or more of the same

@@ -23,7 +23,7 @@ public class DriveArcadeC extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double moveSpeed = -Robot.m_oi.joystick.getRawAxis(RobotMap.DRIVE_MOVE_AXIS);
+    	double moveSpeed = Robot.m_oi.joystick.getRawAxis(RobotMap.DRIVE_MOVE_AXIS);
     	double rotateSpeed = Robot.m_oi.joystick.getRawAxis(RobotMap.DRIVE_ROTATE_AXIS);
     	
     	Robot.drivebase.arcadeDrive(moveSpeed,  rotateSpeed);

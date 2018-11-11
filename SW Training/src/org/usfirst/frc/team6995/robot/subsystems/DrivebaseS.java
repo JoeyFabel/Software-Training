@@ -17,6 +17,7 @@ public class DrivebaseS extends Subsystem {
     private WPI_TalonSRX driveRight = null;
     private DifferentialDrive differentialDrive = null;
     
+    
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -43,7 +44,7 @@ public class DrivebaseS extends Subsystem {
     }
     
     public double getEncoderCount() {
-    	return driveLeft.getSensorCollection().getQuadraturePosition();    	
+    	return driveRight.getSensorCollection().getQuadraturePosition();    	
     }
     
     public double getDistanceTraveled() {
@@ -51,16 +52,12 @@ public class DrivebaseS extends Subsystem {
     }
     
     public void resetEncoder() {
-    	 //This should guarantee the encoders reset every time resetEnconder
-    	 //is called, as it should loop until the encoder is reset.
-    	 while (driveLeft.getSensorCollection().getQuadraturePosition() != 0) {
-    		driveLeft.getSensorCollection().setQuadraturePosition(0, 500);    		
-    	}
-    	
 
-    	System.out.println("Encoder reset to " + driveLeft.getSensorCollection().getQuadraturePosition());
-    	Logger.log(null, Integer.toString(driveLeft.getSensorCollection().getQuadraturePosition()));   
-    	//I don't know whether logger is better than print, so I did both.
+    	driveRight.getSensorCollection().setQuadraturePosition(0, 500); 
+    	driveRight.getSensorCollection().setQuadraturePosition(0, 500);
+    	
+    //	System.out.println("Encoder reset to " + driveLeftQuadrature);
+    	System.out.println( Integer.toString(driveRight.getSensorCollection().getQuadraturePosition()));   
     }
     
 }
