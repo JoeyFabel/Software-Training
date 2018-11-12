@@ -24,7 +24,7 @@ public class GrabberArmsC extends Command {
     	if (Robot.m_oi.joystick.getRawButtonPressed(RobotMap.JB_GRABBER_ARM_OPEN) == true) {
     		Robot.grabberArms.MoveGrabberArms(DoubleSolenoid.Value.kForward);
     		System.out.println("Grabbers open/solenoid forward");
-    	} else if (Robot.m_oi.joystick.getRawButton(RobotMap.JB_GRABBER_ARM_OPEN) == true) {
+    	} else if (Robot.m_oi.joystick.getRawButton(RobotMap.JB_GRABBER_ARM_CLOSE) == true) {
     		Robot.grabberArms.MoveGrabberArms(DoubleSolenoid.Value.kReverse);
     		System.out.println("Grabbers close/solenoid reverse");
     	} else {
@@ -34,7 +34,7 @@ public class GrabberArmsC extends Command {
 
             //Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
 
 
     }
