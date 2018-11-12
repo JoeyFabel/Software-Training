@@ -2,18 +2,17 @@ package org.usfirst.frc.team6995.robot.commands;
 
 import org.usfirst.frc.team6995.robot.Robot;
 import org.usfirst.frc.team6995.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DriveArcadeC extends Command {
+public class GrabberWheelsC extends Command {
 
-    public DriveArcadeC() {
+    public GrabberWheelsC() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drivebase);
+    	requires(Robot.grabberWheels);
     }
 
     // Called just before this Command runs the first time
@@ -22,10 +21,16 @@ public class DriveArcadeC extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double moveSpeed = Robot.m_oi.joystick.getRawAxis(RobotMap.DRIVE_MOVE_AXIS);
-    	double rotateSpeed = Robot.m_oi.joystick.getRawAxis(RobotMap.DRIVE_ROTATE_AXIS);
+    	if (Robot.m_oi.joystick.getRawButtonPressed(RobotMap.JB_WHEELS_COLLECT) == true) {
+    		Robot.grabberWheels.grabberWheelDrive(1.0);    		
+    		System.out.println("Grabber wheels collecting.");
+    	} else if (Robot.m_oi.joystick.getRawButtonPressed(RobotMap.JB_WHEELS_EJECT) == true) {
+    		Robot.grabberWheels.grabberWheelDrive(-1.0);    
+    		System.out.println("Grabber wheels ejecting.");
+    	} else {
+    		Robot.grabberWheels.grabberWheelDrive(0.0);
+    	}
     	
-    	Robot.drivebase.arcadeDrive(moveSpeed, rotateSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,7 +40,7 @@ public class DriveArcadeC extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drivebase.arcadeDrive(0,  0);
+    	Robot.grabberWheels.grabberWheelDrive(0.0);
     }
 
     // Called when another command which requires one or more of the same

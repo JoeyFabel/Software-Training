@@ -8,6 +8,7 @@
 package org.usfirst.frc.team6995.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -16,6 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6995.robot.commands.AutoDriveDistanceC;
 import org.usfirst.frc.team6995.robot.commands.AutoDriveTimeC;
 import org.usfirst.frc.team6995.robot.subsystems.DrivebaseS;
+import org.usfirst.frc.team6995.robot.subsystems.GrabberArmsS;
+import org.usfirst.frc.team6995.robot.subsystems.GrabberWheelsS;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +29,8 @@ import org.usfirst.frc.team6995.robot.subsystems.DrivebaseS;
  */
 public class Robot extends TimedRobot {
 	public static DrivebaseS drivebase;
+	public static GrabberArmsS grabberArms;
+	public static GrabberWheelsS grabberWheels;
 	public static OI m_oi;
 	//Preferences prefs;
 	Command m_autonomousCommand;
@@ -35,6 +40,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		drivebase = new DrivebaseS();
+		grabberArms = new GrabberArmsS();
+		grabberWheels = new GrabberWheelsS();
 		m_oi = new OI();
 
 		SmartDashboard.putData("Auto mode", m_chooser);
