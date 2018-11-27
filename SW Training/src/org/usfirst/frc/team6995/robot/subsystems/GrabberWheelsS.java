@@ -37,6 +37,6 @@ public class GrabberWheelsS extends Subsystem {
     public void grabberWheelDrive(double moveSpeed) {    	
     	differentialDrive.arcadeDrive(moveSpeed, 0.0);
     }
-    
-}
+    }
+
 

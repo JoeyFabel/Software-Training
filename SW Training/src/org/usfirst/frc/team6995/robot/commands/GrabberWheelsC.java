@@ -22,20 +22,21 @@ public class GrabberWheelsC extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (Robot.m_oi.joystick.getRawButtonPressed(RobotMap.JB_WHEELS_COLLECT) == true) {
-    		Robot.grabberWheels.grabberWheelDrive(1.0);    		
+    		Robot.grabberWheels.grabberWheelDrive(1.0);        	
     		System.out.println("Grabber wheels collecting.");
     	} else if (Robot.m_oi.joystick.getRawButtonPressed(RobotMap.JB_WHEELS_EJECT) == true) {
-    		Robot.grabberWheels.grabberWheelDrive(-1.0);    
-    		System.out.println("Grabber wheels ejecting.");
-    	} else {
-    		Robot.grabberWheels.grabberWheelDrive(0.0);
+    		Robot.grabberWheels.grabberWheelDrive(-1.0);
+    		System.out.println("Grabber wheels ejecting.");    	
     	}
-    	
+    	if ((Robot.m_oi.joystick.getRawButton(RobotMap.JB_WHEELS_COLLECT) == false) &&
+    			(Robot.m_oi.joystick.getRawButton(RobotMap.JB_WHEELS_EJECT)== false) ) {    	
+    	Robot.grabberWheels.grabberWheelDrive(0.0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

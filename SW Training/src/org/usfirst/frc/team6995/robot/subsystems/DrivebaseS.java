@@ -53,7 +53,7 @@ public class DrivebaseS extends Subsystem {
     }
     
     public void arcadeDrive(double moveSpeed,double rotateSpeed) {  	
-    	differentialDrive.arcadeDrive(moveSpeed, rotateSpeed);  
+    	differentialDrive.arcadeDrive(-moveSpeed, rotateSpeed);  
     }
     
     public double getEncoderCount() {

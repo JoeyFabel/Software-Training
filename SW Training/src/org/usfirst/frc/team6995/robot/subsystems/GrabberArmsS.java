@@ -21,8 +21,7 @@ public class GrabberArmsS extends Subsystem {
     
     public GrabberArmsS() {
     	
-    	grabberSolenoid = new DoubleSolenoid(RobotMap.GRABBER_ARM_FORWARD_PCM_ID, RobotMap.GRABBER_ARM_BACKWARD_PCM_ID);
-    	
+    	grabberSolenoid = new DoubleSolenoid(1, RobotMap.GRABBER_ARM_FORWARD_PCM_ID, RobotMap.GRABBER_ARM_BACKWARD_PCM_ID);
     }
     
     public void MoveGrabberArms(DoubleSolenoid.Value Direction) {

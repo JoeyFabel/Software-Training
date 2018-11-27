@@ -17,6 +17,7 @@ public class GrabberArmsC extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -24,17 +25,19 @@ public class GrabberArmsC extends Command {
     	if (Robot.m_oi.joystick.getRawButtonPressed(RobotMap.JB_GRABBER_ARM_OPEN) == true) {
     		Robot.grabberArms.MoveGrabberArms(DoubleSolenoid.Value.kForward);
     		System.out.println("Grabbers open/solenoid forward");
-    	} else if (Robot.m_oi.joystick.getRawButton(RobotMap.JB_GRABBER_ARM_CLOSE) == true) {
+    	} else if (Robot.m_oi.joystick.getRawButtonPressed(RobotMap.JB_GRABBER_ARM_CLOSE) == true) {
     		Robot.grabberArms.MoveGrabberArms(DoubleSolenoid.Value.kReverse);
     		System.out.println("Grabbers close/solenoid reverse");
-    	} else {
+    	} 
+    	else {
     		Robot.grabberArms.MoveGrabberArms(DoubleSolenoid.Value.kOff);
     	}
-    }
+    	}
+    
 
             //Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
 
 
     }
